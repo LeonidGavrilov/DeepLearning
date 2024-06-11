@@ -1,0 +1,374 @@
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="windows-1251">
+<title>Домашнее задание 1</title>
+<style>
+    /* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+    body{        
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    .fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }
+    .container{
+        width: 80%;
+        margin: 0 auto; /* Center the DIV horizontally */
+    }
+    nav a{
+        color: #fff;
+        text-decoration: none;
+        padding: 7px 25px;
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="container">
+
+        </div>
+    </div>
+    <div class="container">
+        <form action="predictImage" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="col-md-4 col-sm-4">
+                <label for="FilePath">Загрузить изображение:</label>
+            </div> <input name="filePath" type="file"><br><br>
+            <input type="submit" value="Submit" >
+        </form>
+    </div>    
+    <div>
+        <br>
+        {% if scorePrediction %}
+        <h3>The classification is : {{scorePrediction}}</h3>
+        {% endif %}
+       
+    </div>
+    <div class="fixed-footer">
+        <div class="container"></div>        
+    </div>
+</body>
+</html> -->
+<!-- ------------------------------------------------- -->
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Домашнее задание 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Reset */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+        padding-top: 80px; /* Adjusted padding to accommodate fixed header */
+    }
+
+    /* Header styles */
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 20px 0;
+        text-align: center;
+        z-index: 1000;
+        color: #fff;
+    }
+
+    /* Container styles */
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* Form styles */
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Footer styles */
+    .fixed-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 20px 0;
+        text-align: center;
+        color: #fff;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 768px) {
+        body {
+            padding-top: 120px; /* Adjusted padding for smaller screens */
+        }
+
+        .container {
+            padding: 0 10px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <h1>Мой заголовок</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <form action="predictImage" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label for="FilePath">Загрузить изображение:</label>
+                <input name="filePath" type="file">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div>
+            <br>
+            {% if scorePrediction %}
+            <h3>The classification is: {{scorePrediction}}</h3>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="fixed-footer">
+        <div class="container">
+            <p>Мой подвал</p>
+        </div>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>РНС ДЗ1 ИУ5-23М Гаврилов Л.Я.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Reset */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+        padding-top: 80px; /* Adjusted padding to accommodate fixed header */
+    }
+
+    /* Header styles */
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 20px 0;
+        text-align: center;
+        z-index: 1000;
+        color: #fff;
+    }
+
+    /* Container styles */
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* Form styles */
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+        display: none; /* Hide the original file input */
+    }
+
+    .custom-file-upload {
+        display: inline-block;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .custom-file-upload:hover {
+        background-color: #555;
+    }
+
+    input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #555;
+    }
+
+    /* Image preview styles */
+    .image-preview {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .image-preview img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer styles */
+    .fixed-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 20px 0;
+        text-align: center;
+        color: #fff;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 768px) {
+        body {
+            padding-top: 120px; /* Adjusted padding for smaller screens */
+        }
+
+        .container {
+            padding: 0 10px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <h1>РНС ДЗ1 ИУ5-23М Гаврилов Л.Я.</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <form action="predictImage" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label for="FilePath">Загрузить изображение:</label>
+                <label for="file-upload" class="custom-file-upload">
+                    Выберите файл
+                </label>
+                <input id="file-upload" name="filePath" type="file" accept="image/*" onchange="previewImage()">
+            </div>
+            <div class="image-preview" id="imagePreview"></div>
+            <input type="submit" value="Выбрать">
+        </form>
+
+        <div>
+            <br>
+            {% if scorePrediction %}
+            <h3>The classification is: {{scorePrediction}}</h3>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="fixed-footer">
+        <div class="container">
+            <p>что-то связанное с нейросетями</p>
+        </div>
+    </div>
+
+    <script>
+        function previewImage() {
+            const fileInput = document.getElementById('file-upload');
+            const imagePreview = document.getElementById('imagePreview');
+
+            while (imagePreview.firstChild) {
+                imagePreview.removeChild(imagePreview.firstChild);
+            }
+
+            const files = fileInput.files;
+            if (files.length > 0) {
+                const image = document.createElement('img');
+                image.src = URL.createObjectURL(files[0]);
+                image.style.maxWidth = '300px'; // Adjust as needed
+                imagePreview.appendChild(image);
+            }
+        }
+    </script>
+</body>
+</html>
